@@ -1,0 +1,280 @@
+:root {
+    font-family: Inter, "Noto Sans JP", system-ui, sans-serif;
+    color: #172033;
+    background: #f4f7fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+    padding: 54px 0 80px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: clamp(30px, 5vw, 52px);
+    margin: 10px 0;
+}
+
+header p {
+    color: #687386;
+}
+
+.badge,
+.section-title span {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #5965d8;
+}
+
+.card,
+.result-card {
+    background: #fff;
+    border: 1px solid #e5eaf2;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(25, 38, 70, 0.07);
+}
+
+.upload-card {
+    padding: 22px;
+}
+
+.drop-zone {
+    min-height: 360px;
+    border: 2px dashed #cbd3e2;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    background: #fafbfe;
+    transition: 0.2s;
+}
+
+.drop-zone.drag {
+    border-color: #5965d8;
+    background: #f2f3ff;
+}
+
+.upload-icon {
+    margin: auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #eef0ff;
+    color: #5965d8;
+    font-size: 34px;
+}
+
+.drop-zone h2 {
+    margin: 15px 0 5px;
+}
+
+.drop-zone p {
+    color: #7a8495;
+}
+
+.drop-zone img {
+    display: none;
+    max-height: 440px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.drop-zone.has-image img {
+    display: block;
+}
+
+.drop-zone.has-image #placeholder {
+    display: none;
+}
+
+button {
+    display: block;
+    margin: 18px auto 0;
+    border: 0;
+    border-radius: 12px;
+    padding: 14px 30px;
+    background: #172033;
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#status {
+    text-align: center;
+    margin-top: 12px;
+    color: #667085;
+}
+
+.hidden {
+    display: none;
+}
+
+.section-title {
+    margin: 45px 0 18px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    margin: 4px 0;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.result-card {
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.hero-result {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.hero-result img,
+.gradcam-grid img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.animal {
+    color: #687386;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.breed {
+    font-size: 34px;
+    font-weight: 900;
+    margin: 5px 0;
+}
+
+.confidence {
+    font-size: 20px;
+    color: #5965d8;
+    font-weight: 800;
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 70px;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.bar-track {
+    height: 13px;
+    background: #edf0f5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background: linear-gradient(90deg, #5965d8, #8b65dc);
+    border-radius: 999px;
+}
+
+.gradcam-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.similar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.similar-item {
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.similar-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.similar-meta {
+    padding: 9px;
+    font-size: 13px;
+}
+
+.similar-meta b {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.description {
+    line-height: 1.8;
+    color: #4f5b6d;
+    white-space: pre-line;
+}
+
+.error {
+    padding: 14px;
+    border-radius: 12px;
+    background: #fff1f1;
+    color: #a12626;
+}
+
+.startup {
+    margin-bottom: 16px;
+}
+
+/* スマホ表示 */
+@media (max-width: 760px) {
+
+    .summary-grid,
+    .hero-result,
+    .gradcam-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .similar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bar-row {
+        grid-template-columns: 110px 1fr 58px;
+    }
+
+    .drop-zone {
+        min-height: 280px;
+    }
+}
