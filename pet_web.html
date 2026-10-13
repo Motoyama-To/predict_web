@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+    >
+
+    <title>
+        犬・猫 品種判定システム
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/pet_web.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+
+        <!-- ============================== -->
+        <!-- ヘッダー -->
+        <!-- ============================== -->
+
+        <header>
+
+            <span class="badge">
+                AI IMAGE SEARCH
+            </span>
+
+            <h1>
+                犬・猫 品種判定システム
+            </h1>
+
+            <p>
+                画像を貼り付けると、品種推定・Grad-CAM・類似画像検索をまとめて表示します。
+            </p>
+
+        </header>
+
+
+        <!-- ============================== -->
+        <!-- 起動時のエラー表示 -->
+        <!-- ============================== -->
+
+        {% if startup_error %}
+
+            <div class="error startup">
+
+                <b>
+                    起動準備が必要です：
+                </b>
+
+                {{ startup_error }}
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ============================== -->
+        <!-- 画像アップロード部分 -->
+        <!-- ============================== -->
+
+        <section class="card upload-card">
+
+
+            <!-- 画像をドロップする領域 -->
+            <div
+                id="dropZone"
+                class="drop-zone"
+                tabindex="0"
+            >
+
+
+                <!-- ファイル選択 -->
+                <input
+                    id="fileInput"
+                    type="file"
+                    accept="image/*"
+                    hidden
+                >
+
+
+                <!-- 選択した画像のプレビュー -->
+                <img
+                    id="preview"
+                    alt="プレビュー"
+                >
+
+
+                <!-- 画像が選択される前に表示する内容 -->
+                <div id="placeholder">
+
+
+                    <div class="upload-icon">
+                        ＋
+                    </div>
+
+
+                    <h2>
+                        ここに画像をペースト
+                    </h2>
+
+
+                    <p>
+                        Ctrl + V / ドラッグ&ドロップ / クリックして選択
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- AI解析を開始するボタン -->
+            <button
+                id="predictBtn"
+                disabled
+            >
+                この画像を判定する
+            </button>
+
+
+            <!-- 「解析中」「解析完了」などを表示 -->
+            <div id="status"></div>
+
+
+        </section>
+
+
+        <!-- ============================== -->
+        <!-- AI解析結果 -->
+        <!-- ============================== -->
+
+        <section
+            id="results"
+            class="hidden"
+        >
+
+
+            <!-- 結果部分のタイトル -->
+            <div class="section-title">
+
+
+                <span>
+                    RESULT
+                </span>
+
+
+                <h2>
+                    解析結果
+                </h2>
+
+
+            </div>
+
+
+            <!-- JavaScriptによって解析結果が挿入される -->
+            <div id="resultContent"></div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- JavaScriptファイルを読み込む -->
+    <script
+        src="{{ url_for('static', filename='js/pet_web.js') }}"
+    ></script>
+
+
+</body>
+
+</html>
